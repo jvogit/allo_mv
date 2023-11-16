@@ -1,3 +1,28 @@
+# allolib_mv
+
+I saw a pretty cool music visualizer on [YouTube](https://www.youtube.com/watch?v=SmwKw3aXHzQ) so I wanted to run it for myself. The original music
+visualizer is [Mitchell Lewis's](https://github.com/Mitchell57/MAT201B-mblewis).
+
+## Windows with WSL2/WSLg
+
+I am running it on Windows using WSL2/WSLg. After following standard prerequisites for allolib, here are some notable things I've done to get it to work.
+
+### WSLg PulseAudio alsa
+This is for the sound to output correctly when developing. WSLg supports pulseaudio out of the box. To get it to work with ALSA install `libasound2` and then add
+```
+pcm.default pulse
+ctl.default pulse
+```
+to the `~/.asoundrc`. [Source](https://github.com/microsoft/wslg/issues/864)
+
+### Graphics Card mesa-utils
+To display graphics correctly I had to install `mesa-utils` and select my NVIDIA GPU `export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA`. [Source](https://github.com/microsoft/wslg/wiki/GPU-selection-in-WSLg)
+
+## Running it
+```
+./run.sh mblewis/final_project/seeing-sound.cpp
+```
+
 # Allolib playground
 [![Build Status](https://travis-ci.org/AlloSphere-Research-Group/allolib_playground.svg?branch=master)](https://travis-ci.org/AlloSphere-Research-Group/allolib_playground)
 
